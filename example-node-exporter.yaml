@@ -22,6 +22,8 @@ kind: DaemonSet
 metadata:
   name: node-exporter
 spec:
+  selector:
+    app: node-exporter
   template:
     metadata:
       labels:
