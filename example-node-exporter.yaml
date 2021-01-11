@@ -24,7 +24,7 @@ metadata:
 spec:
   selector:
     matchLabels:
-      name: node-exporter
+      app: node-exporter
   template:
     metadata:
       labels:
