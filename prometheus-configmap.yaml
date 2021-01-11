@@ -27,6 +27,10 @@ data:
         static_configs:
         - targets: ['localhost:9090']
       - job_name: node
-        static_configs:
-        - targets: ['localhost:9100']
+        kubernetes_sd_configs:
+          - role: endpoints
+        relabel_configs:
+        - source_labels: [__meta_kubernetes_endpoints_name]
+          regex: 'node-exporter'
+          action: keep
     # remote storage details.
