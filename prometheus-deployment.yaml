@@ -52,3 +52,20 @@ spec:
           name: prometheus-config
       - name: data
         emptyDir: {}
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: prometheus-service
+  namespace: prometheus
+spec:
+  externalTrafficPolicy: Cluster
+  selector:
+    app: prometheus
+  type: LoadBalancer
+  sessionAffinity: None
+  ports:
+  - name: prometheus
+    protocol: TCP
+    port: 9090
+    nodePort: 30900
