@@ -7,10 +7,13 @@ metadata:
     name: node-exporter
   namespace: prometheus
 spec:
+  selector:
+    matchLabels:
+      app: node-exporter
   template:
     metadata:
+      name: node-exporter
       labels:
-        name: node-exporter
         app: node-exporter
       annotations:
          prometheus.io/scrape: "true"
