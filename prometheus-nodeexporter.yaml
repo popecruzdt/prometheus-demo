@@ -73,6 +73,7 @@ metadata:
   name: node-exporter-service
   namespace: prometheus
 spec:
+  type: NodePort
   ports:
   - name: scrape
     port: 9100
@@ -81,4 +82,3 @@ spec:
     nodePort: 30100
   selector:
     app: node-exporter
-  type: NodePort
