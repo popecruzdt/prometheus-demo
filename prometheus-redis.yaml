@@ -21,3 +21,17 @@ spec:
         image: redis:4
         ports:
         - containerPort: 6379
+---
+kind: Service
+apiVersion: v1
+metadata:
+  name: redis
+  namespace: prometheus
+spec:
+  selector:
+    app: redis
+  ports:
+  - name: redis
+    protocol: TCP
+    port: 6379
+    targetPort: 6379
