@@ -1,0 +1,44 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: redis
+  labels:
+    name: redis
+  namespace: prometheus
+spec:
+  selector:
+    matchLabels:
+      app: redis
+  template:
+    metadata:
+      name: redis
+      labels:
+        app: redis
+      annotations:
+         prometheus.io/scrape: "true"
+         prometheus.io/port: "9121"
+    spec:
+      containers:
+      - name: redis
+        image: redis:4
+        ports:
+        - containerPort: 6379
+      - name: redis-exporter
+        image: oliver006/redis_exporter:latest
+        ports:
+        - containerPort: 9121
+---
+kind: Service
+apiVersion: v1
+metadata:
+  name: redis-exporter
+  namespace: prometheus
+spec:
+  selector:
+    app: redis
+  ports:
+  - name: redis-exporter
+    protocol: TCP
+    port: 9100
+    targetPort: 9100
