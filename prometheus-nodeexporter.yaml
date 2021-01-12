@@ -17,6 +17,7 @@ spec:
         app: node-exporter
       annotations:
          prometheus.io/scrape: "true"
+         metrics.dynatrace.com/scrape: "true"
     spec:
       hostPID: true
       hostIPC: true

@@ -18,6 +18,7 @@ spec:
       annotations:
          prometheus.io/scrape: "true"
          prometheus.io/port: "9121"
+         metrics.dynatrace.com/scrape: "true"
     spec:
       containers:
       - name: redis
