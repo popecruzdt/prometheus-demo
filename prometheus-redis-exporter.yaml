@@ -23,6 +23,8 @@ spec:
       containers:
       - name: redis-exporter
         image: oliver006/redis_exporter:latest
+        args:
+          - "--redis.addr=redis://redis-service:6379"
         ports:
         - containerPort: 9121
 ---
