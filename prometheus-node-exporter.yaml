@@ -30,7 +30,7 @@ spec:
               protocol: TCP
           resources:
             requests:
-              cpu: 0.15
+              cpu: 100m
           securityContext:
             privileged: true
           image: prom/node-exporter
